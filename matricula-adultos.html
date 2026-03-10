@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bienvenido al Colegio Virtual</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #f0f4f8;
+      font-family: 'DM Sans', sans-serif;
+      color: #1a2540;
+    }
+
+    .wrapper {
+      max-width: 640px;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.10);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: linear-gradient(135deg, #00194a 20%, #097a76 50%, #00194a 100%);
+      padding: 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .header::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 32px;
+      background: #ffffff;
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    /* ── BODY ── */
+    .body {
+      padding: 10px 48px 40px;
+    }
+
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .greeting-tag {
+      display: inline-block;
+      background: #eef3ff;
+      color: #0d2c6b;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .student-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #0d2c6b;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .saludo {
+      font-size: 18px;
+      font-weight: 500;
+      color: #097a76;
+      margin-bottom: 24px;
+    }
+
+    .welcome-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #3b4a68;
+      margin-bottom: 32px;
+    }
+
+    /* ==== Access Card ==== */
+    .access-card {
+      background: linear-gradient(135deg, #00194a, #0d2c6b);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 32px;
+      color: #fff;
+    }
+
+    .access-card h3 {
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .credential-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .credential-row:last-of-type { margin-bottom: 0; }
+
+    .cred-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      min-width: 90px;
+    }
+
+    .cred-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: #ffffff;
+      background: rgba(255,255,255,0.12);
+      padding: 6px 14px;
+      border-radius: 6px;
+      flex: 1;
+    }
+
+    .btn-platform {
+      display: block;
+      margin-top: 22px;
+      text-align: center;
+      background: #ff8b00;
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 13px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    /* ==== Info Sections ==== */
+    .section {
+      background: #f7f9ff;
+      border-left: 4px solid #072f85;
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .section h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a4fa8;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #3b4a68;
+    }
+
+    /* Materias placeholder */
+    .materias-placeholder {
+      display: inline-block;
+      background: #fff3cd;
+      border: 2px dashed #f59e0b;
+      color: #92400e;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    /* ==== Closing ==== */
+    .closing {
+      text-align: center;
+      margin-top: 36px;
+      padding-top: 32px;
+      border-top: 1px solid #e8edf5;
+    }
+
+    .closing p {
+      font-size: 16px;
+      font-weight: 500;
+      color: #0d2c6b;
+      line-height: 1.7;
+    }
+
+    /* ===== Footer ===== */
+    .footer {
+      background: #0d2c6b;
+      padding: 28px 48px;
+      text-align: center;
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+    }
+
+    /* ==== Responsive ==== */
+    @media (max-width: 600px) {
+      .wrapper { margin: 0; border-radius: 0; }
+      .header { padding: 32px 24px 28px; }
+      .body { padding: 36px 24px 28px; }
+      .footer { padding: 24px; }
+      .student-name { font-size: 26px; }
+      .access-card { padding: 22px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+  <div class="header">
+    
+  </div>
+
+  <div class="body">
+
+    <div class="logo-container">
+      <img 
+        src="logo.png"  
+        alt="Logo Skolmi"
+        width="150"
+      >
+    </div>
+
+    <span class="greeting-tag">✉ Confirmación de matrícula</span>
+
+    <!-- VARIABLE NOMBRE -->
+    <div class="student-name">{{NOMBRE_ESTUDIANTE}}</div>
+    <div class="saludo">¡Gusto en saludarte! 🎉</div>
+
+    <p class="welcome-text">
+      En nombre de toda la <strong>Familia Skolmi</strong> te damos la más cálida
+      <strong>Bienvenida</strong> y te felicitamos por tu excelente decisión de
+      terminar tu <strong>Bachillerato</strong>. Este es un paso enorme en tu vida y estamos
+      aquí para acompañarte.
+    </p>
+
+    <!-- TARJETA DE ACCESO -->
+    <div class="access-card">
+      <h3>🔐 Tus credenciales de acceso</h3>
+      <div class="credential-row">
+        <span class="cred-label">Plataforma</span>
+        <span class="cred-value">https://adultos.skolmi.com/</span>
+      </div>
+      <div class="credential-row">
+        <span class="cred-label">Usuario</span>
+        <span class="cred-value">Documento de Identidad</span> <!-- Acá también podría ir una variable -->
+      </div>
+      <div class="credential-row">
+        <span class="cred-label">Contraseña</span>
+        <span class="cred-value">Skolmi*2026</span>
+      </div>
+      <a href="https://adultos.skolmi.com/" class="btn-platform">
+        Ingresar a la Plataforma
+      </a>
+    </div>
+
+    <!-- CURSO INTRODUCTORIO -->
+    <div class="section">
+      <h4>📚 Curso Introductorio (Obligatorio)</h4>
+      <p>
+        Se te ha asignado en la plataforma el <strong>Curso Introductorio</strong>, el cual es
+        <strong>necesario y obligatorio</strong> realizar antes de continuar con las materias del
+        bachillerato. En este curso aprenderás a manejar cada una de las herramientas, cómo
+        preguntar y socializar con los compañeros y el tutor, así como la realización de
+        actividades programadas, talleres, foros, wikis, entre otros.
+      </p>
+    </div>
+
+    <!-- MATERIAS ASIGNADAS -->
+    <div class="section">
+      <h4>🎓 Materias Asignadas</h4>
+      <p>
+        Una vez finalices el curso introductorio, podrás iniciar con las siguientes materias:
+      </p>
+      <!-- VARIABLE MATERIAS -->
+      <div class="materias-placeholder">
+        📋 {{ASIGNAR RUTAS A CURSAR DEL CICLO #}}
+      </div>
+    </div>
+
+    <!-- CIERRE -->
+    <div class="closing">
+      <p>
+        <strong>¡Aprenderás mucho, cuenta con nosotros!</strong><br>
+        Skolmi, Escuela donde quieras 🌟
+      </p>
+    </div>
+
+  </div>
+
+  <!-- ══ FOOTER ══ -->
+  <div class="footer">
+    <div class="logo-container">
+      <img 
+        src="logo-white.png"  
+        alt="Logo Skolmi"
+        width="150"
+      >
+    </div>
+    <p> 
+      Este correo fue enviado automáticamente.<br>
+      Por favor no respondas directamente a este mensaje.
+    </p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Skolmi</title>
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-gradient: linear-gradient(135deg, #4F46E5 0%, #3730A3 100%);
+            --secondary: #10B981;
+            --secondary-gradient: linear-gradient(135deg, #10B981 0%, #047857 100%);
+            --background: #F3F4F6;
+            --surface: #FFFFFF;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--background);
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1.5rem;
+        }
+
+        .dashboard {
+            background-color: var(--surface);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
+            padding: 3rem 2.5rem;
+            width: 100%;
+            max-width: 650px;
+            text-align: center;
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            margin-bottom: 2.5rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, #1F2937, #4B5563);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .header p {
+            color: var(--text-light);
+            font-size: 1.125rem;
+            font-weight: 300;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .card {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 1.5rem;
+            border-radius: 20px;
+            color: white;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-adultos {
+            background: var(--primary-gradient);
+        }
+
+        .card-adultos:hover {
+            box-shadow: 0 20px 30px -10px rgba(79, 70, 229, 0.4);
+        }
+
+        .card-extraedad {
+            background: var(--secondary-gradient);
+        }
+
+        .card-extraedad:hover {
+            box-shadow: 0 20px 30px -10px rgba(16, 185, 129, 0.4);
+        }
+
+        .icon-circle {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover .icon-circle {
+            transform: scale(1.1);
+        }
+
+        .icon-circle svg {
+            width: 36px;
+            height: 36px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 600px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>Panel de Control</h1>
+            <p>Selecciona el módulo de matrícula al que deseas acceder</p>
+        </div>
+
+        <div class="cards-container">
+            <a href="/emailSkolmi/matricula-adultos.html" class="card card-adultos">
+                <div class="icon-circle">
+                    <!-- Icono de Usuarios/Adultos -->
+                    <svg viewBox="0 0 24 24">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                </div>
+                <h2 class="card-title">Matrícula Adultos</h2>
+            </a>
+
+            <a href="/matricula-extraedad.html" class="card card-extraedad">
+                <div class="icon-circle">
+                    <!-- Icono de Escuela/Extraedad -->
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                        <path
+                            d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z">
+                        </path>
+                        <path d="M12 14v6"></path>
+                    </svg>
+                </div>
+                <h2 class="card-title">Matrícula Extraedad</h2>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

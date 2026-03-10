@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bienvenido – Matrícula Extraedad</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #f0f4f8;
+      font-family: 'DM Sans', sans-serif;
+      color: #1a2540;
+    }
+
+    .wrapper {
+      max-width: 640px;
+      margin: 40px auto;
+      background: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 48px rgba(0,0,0,0.10);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: linear-gradient(135deg, #00194a 20%, #097a76 50%, #00194a 100%);
+      padding: 40px 48px 36px;
+      text-align: center;
+      position: relative;
+    }
+
+    .header::after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 32px;
+      background: #ffffff;
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    .logo-container {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    /* ── BANNER VIAJE ── */
+    .journey-banner {
+      background: linear-gradient(90deg, #facc15 0%, #f59e0b 100%);
+      padding: 14px 48px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #0d2c6b;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── BODY ── */
+    .body {
+      padding: 48px 48px 40px;
+    }
+
+    .greeting-tag {
+      display: inline-block;
+      background: #eef3ff;
+      color: #1a4fa8;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .student-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: #0d2c6b;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .saludo {
+      font-size: 18px;
+      font-weight: 500;
+      color: #2563eb;
+      margin-bottom: 24px;
+    }
+
+    .welcome-text {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #3b4a68;
+      margin-bottom: 32px;
+    }
+
+    /* ── FECHA DE INICIO ── */
+    .start-date {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #f0fdf4;
+      border: 2px solid #22c55e;
+      border-radius: 12px;
+      padding: 18px 24px;
+      margin-bottom: 28px;
+    }
+
+    .date-icon {
+      font-size: 32px;
+      line-height: 1;
+    }
+
+    .date-text {
+      font-size: 13px;
+      color: #166534;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .date-text strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      color: #15803d;
+    }
+
+    /* ── ACCESS CARD ── */
+    .access-card {
+      background: linear-gradient(135deg, #0d2c6b, #1a4fa8);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 28px;
+      color: #fff;
+    }
+
+    .access-card h3 {
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 20px;
+    }
+
+    .credential-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .credential-row:last-of-type { margin-bottom: 0; }
+
+    .cred-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      min-width: 100px;
+      padding-top: 7px;
+    }
+
+    .cred-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: #ffffff;
+      background: rgba(255,255,255,0.12);
+      padding: 6px 14px;
+      border-radius: 6px;
+      flex: 1;
+      line-height: 1.5;
+    }
+
+    .btn-platform {
+      display: block;
+      margin-top: 22px;
+      text-align: center;
+      background: #facc15;
+      color: #0d2c6b;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 13px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── AVISO CONTRASEÑA ── */
+    .password-notice {
+      background: #fff7ed;
+      border: 2px solid #f97316;
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin-bottom: 28px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .password-notice .notice-icon { font-size: 20px; }
+
+    .password-notice p {
+      font-size: 13px;
+      color: #9a3412;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    /* ── INFO SECTIONS ── */
+    .section {
+      background: #f7f9ff;
+      border-left: 4px solid #2563eb;
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .section h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a4fa8;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #3b4a68;
+    }
+
+    /* ── HERRAMIENTAS ── */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .tool-item {
+      background: #ffffff;
+      border: 1px solid #dbeafe;
+      border-radius: 8px;
+      padding: 10px 8px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: #1a4fa8;
+      line-height: 1.4;
+    }
+
+    .tool-item .tool-icon { font-size: 20px; display: block; margin-bottom: 4px; }
+
+    /* ── MOCHILA VIAJE ── */
+    .backpack-grid {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .backpack-item {
+      background: linear-gradient(135deg, #eef3ff, #dbeafe);
+      border-radius: 20px;
+      padding: 7px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #1a4fa8;
+    }
+
+    /* ── CLOSING ── */
+    .closing {
+      text-align: center;
+      margin-top: 36px;
+      padding-top: 32px;
+      border-top: 1px solid #e8edf5;
+    }
+
+    .closing p {
+      font-size: 16px;
+      font-weight: 500;
+      color: #0d2c6b;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #0d2c6b;
+      padding: 28px 48px;
+      text-align: center;
+    }
+
+    .footer-school {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+      border: 1px dashed rgba(255,255,255,0.25);
+      display: inline-block;
+      padding: 5px 16px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    .footer p {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.6;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .wrapper { margin: 0; border-radius: 0; }
+      .header { padding: 32px 24px 28px; }
+      .body { padding: 36px 24px 28px; }
+      .journey-banner { padding: 12px 24px; }
+      .footer { padding: 24px; }
+      .student-name { font-size: 26px; }
+      .access-card { padding: 22px 20px; }
+      .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+</div>
+
+<!-- ══ LOGO ══ -->
+<div class="logo-container">
+    <img src="logo.png" alt="Logo Skolmi" width="150">
+</div>
+
+<!-- ══ BANNER ══ -->
+<div class="journey-banner">
+    ¡Empieza tu aventura de aprendizaje!
+</div>
+
+<!-- ══ CUERPO ══ -->
+<div class="body">
+
+    <span class="greeting-tag">✉ Confirmación de matrícula</span>
+
+    <!-- ✏️ Reemplaza con el nombre real del estudiante -->
+    <div class="student-name">{{NOMBRE_ESTUDIANTE}}</div>
+    <div class="saludo">Hola 👋</div>
+
+    <p class="welcome-text">
+    Te damos un saludo muy especial de <strong>Bienvenida</strong>, deseándote muchos
+    <strong>éxitos</strong> en tus propósitos y metas por cumplir. Siempre podrás contar con toda
+    la <strong>Familia Skolmi</strong> en este nuevo proceso y aventura del conocimiento que
+    emprendes. ¡Aprenderás muchas cosas nuevas y te divertirás mucho!
+    </p>
+
+    <!-- FECHA DE INICIO -->
+    <div class="start-date">
+    <div class="date-icon">📅</div>
+    <div class="date-text">
+        Puedes ingresar e iniciar tu proceso a partir de
+        <strong>{{FECHA_INICIO}}</strong> <!-- VARIABLE FECHA_INICIO-->
+    </div>
+    </div>
+
+    <!-- TARJETA DE ACCESO -->
+    <div class="access-card">
+      <h3>🔐 Tus credenciales de acceso — Plataforma Jóvenes</h3>
+      <div class="credential-row">
+          <span class="cred-label">Plataforma</span>
+          <span class="cred-value">https://jovenes.skolmi.com</span>
+      </div>
+      <div class="credential-row">
+          <span class="cred-label">Usuario</span>
+          <span class="cred-value">
+          Tu número de documento <em>sin puntos, comas ni guiones</em>
+          </span>
+      </div>
+      <div class="credential-row">
+          <p class="cred-label">Contraseña</p>
+          <p class="cred-value">Skolmi*2026 <span style="color: rgba(255,255,255,0.65); cursor: default;">(respeta las mayúsculas)</span></p>
+      </div>
+      <!-- ✏️ Reemplaza con el enlace real -->
+      <a href="https://jovenes.skolmi.com/login/index.php" class="btn-platform">
+          👉 Ingresar a la Plataforma Jóvenes
+      </a>
+    </div>
+
+    <!-- AVISO CAMBIO DE CONTRASEÑA -->
+    <div class="password-notice">
+    <span class="notice-icon">⚠️</span>
+    <p>
+        <strong>Cambio obligatorio de contraseña:</strong> Al ingresar por primera vez, la
+        plataforma te pedirá que establezcas una nueva contraseña. Sigue las indicaciones
+        en pantalla para completar este paso.
+    </p>
+    </div>
+
+    <!-- HERRAMIENTAS NECESARIAS -->
+    <div class="section">
+    <h4>🛠 Herramientas de estudio requeridas</h4>
+    <p>Para realizar este viaje de manera óptima, asegúrate de que todo funcione correctamente:</p>
+    <div class="tools-grid">
+        <div class="tool-item"><span class="tool-icon">🔊</span>Audio / Parlantes</div>
+        <div class="tool-item"><span class="tool-icon">🎧</span>Audífonos</div>
+        <div class="tool-item"><span class="tool-icon">🎙</span>Micrófono</div>
+        <div class="tool-item"><span class="tool-icon">📷</span>Webcam</div>
+        <div class="tool-item"><span class="tool-icon">📶</span>Internet</div>
+        <div class="tool-item"><span class="tool-icon">💻</span>Computador</div>
+    </div>
+    </div>
+
+    <!-- MOCHILA DEL VIAJE -->
+    <div class="section">
+    <h4>🎒 Lleva en tu mochila de viaje</h4>
+    <p>Además de las herramientas técnicas, es muy importante que traigas:</p>
+    <div class="backpack-grid">
+        <span class="backpack-item">🙌 Autonomía y responsabilidad</span>
+        <span class="backpack-item">💡 Ideas y participación</span>
+        <span class="backpack-item">🔍 Interés investigativo</span>
+    </div>
+    </div>
+
+    <!-- ACOMPAÑAMIENTO -->
+    <div class="section">
+      <h4>👨‍👩‍👧 Acompañamiento y comunicación</h4>
+      <p>
+          Invita a tus <strong>padres o acudientes</strong> para que te acompañen en este proceso.
+          Mantén <strong>constante comunicación con tu tutor</strong>; así, juntos, lograremos al
+          final del viaje los <strong>mejores resultados</strong>.
+      </p>
+    </div>
+
+    <!-- CIERRE -->
+    <div class="closing">
+      <p>
+          <strong>¡Feliz viaje y aventura del conocimiento!</strong><br>
+          Estamos muy emocionados de que empieces esta nueva etapa. 🌟
+      </p>
+      <p style="margin-top:14px; font-size:15px; color:#097a76; font-weight:600;">
+          ✨ ¡Cuenta con nosotros siempre! ✨
+      </p>
+    </div>
+
+</div>
+
+<!-- ══ FOOTER ══ -->
+<div class="footer">
+    <div class="logo-container">
+      <img 
+        src="logo-white.png"  
+        alt="Logo Skolmi"
+        width="150"
+      >
+    </div>
+    <p>
+    Este correo fue enviado automáticamente tras tu matrícula.<br>
+    Por favor no respondas directamente a este mensaje.</p>
+</div>
+
+</div>
+</body>
+</html>
